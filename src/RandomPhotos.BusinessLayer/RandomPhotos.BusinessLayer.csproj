@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ChatGptNet" Version="2.0.14" />
+      <PackageReference Include="DallENet" Version="1.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RandomPhotos.Shared\RandomPhotos.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
