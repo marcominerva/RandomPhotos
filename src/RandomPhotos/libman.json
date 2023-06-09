@@ -17,6 +17,10 @@
         {
             "library": "alpinejs@3.12.2",
             "destination": "wwwroot/lib/alpinejs"
+        },
+        {
+            "library": "bs5-lightbox@1.8.3",
+            "destination": "wwwroot/lib/bs5-lightbox"
         }
     ]
 }

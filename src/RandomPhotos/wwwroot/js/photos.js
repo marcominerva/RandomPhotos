@@ -29,8 +29,8 @@
 
                 if (this.errorMessage == null) {
                     // The request has succeeded.
-                    this.description = this.description;
-                    this.imageUrl = this.imageUrl;
+                    this.description = content.description;
+                    this.imageUrl = content.url;
                 }
             } catch (error) {
                 this.isBusy = false;
