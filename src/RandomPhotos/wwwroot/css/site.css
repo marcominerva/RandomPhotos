@@ -51,21 +51,21 @@ input:focus {
 
 .photo {
     margin-top: 50px;
-    width: 300px;
+    width: 400px;
     height: auto;
 }
 
 @media (min-width: 768px) {
     .photo {
         margin-top: 0px;
-        width: 500px;
+        width: 600px;
     }
 }
 
 @media (min-width: 2560px) {
     .photo {
         margin-top: 0px;
-        width: 900px;
+        width: 1000px;
     }
 }
 
