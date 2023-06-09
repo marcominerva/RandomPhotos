@@ -2,9 +2,9 @@
 
 public class AppSettings
 {
-    public string ApplicationName { get; init; } = "Random Photos";
+    public string ApplicationName { get; init; } = "TranslatorGPT";
 
-    public string ApplicationDescription { get; init; } = "Use AI to generate random photos";
+    public string ApplicationDescription { get; init; } = "Translate text using AI";
 
     public string[] SupportedCultures { get; init; }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
@@ -6,12 +6,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="ChatGptNet" Version="2.0.14" />
-      <PackageReference Include="DallENet" Version="1.0.7" />
+        <PackageReference Include="ChatGptNet" Version="2.0.11" />
+        <PackageReference Include="DallENet" Version="1.0.7" />
+        <PackageReference Include="OperationResultTools" Version="1.0.12" />
+        <PackageReference Include="TinyHelpers" Version="2.0.30" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RandomPhotos.Shared\RandomPhotos.Shared.csproj" />
+        <ProjectReference Include="..\RandomPhotos.Shared\RandomPhotos.Shared.csproj" />
     </ItemGroup>
 
 </Project>

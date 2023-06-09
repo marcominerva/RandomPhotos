@@ -1,10 +1,68 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div x-data="photos">   
+
+    <div class="row">
+        <div class="col text-center">
+            <img src="https://dalleproduse.blob.core.windows.net/private/images/a66873a9-ae1f-4905-934b-b860911e4b09/generated_00.png?se=2023-06-10T08%3A47%3A34Z&sig=Tvkul%2FrDWgMSMyVjopSRxnCLTd%2FREv4WOBNhIySC1Oc%3D&ske=2023-06-15T05%3A48%3A09Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2023-06-08T05%3A48%3A09Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02"
+            class="photo" alt="...">           
+        </div>
+        <div>
+            <span>In uno stile pittorico impressionista, l'immagine ritrae un paesaggio campestre ricco di colori vivaci e pennellate fluide, tipiche di questo movimento artistico. Al centro, un sentiero sinuoso attraversa il quadro, invitando lo spettatore a percorrere con lo sguardo le dolci colline verdeggianti che lo circondano, e a perdersi nell'atmosfera romantica. Sulle colline, piccoli papaveri rossi spiccano tra la vegetazione, catturando l'attenzione e imprimendosi nella mente, come simboli di un'estate in fiore. Un cielo azzurro con ampie nuvole bianche e soffici accentua la profondità del quadro, creando un effetto di luce e ombra che gioca sulla campagna. Sullo sfondo, le sagome di alberi e casolari si possono intravedere tra le pennellate rapide, evocando un senso di quiete e pace che si diffonde nell'immagine. L'insieme di colori e forme, unito allo stile tipico dell'impressionismo, fa di questa opera un vero tributo alla bellezza della natura e all'arte che ne cattura l'essenza.</span>
+        </div>
+    </div>
+
+    @*<div class="row">
+        <div class="col-6">
+            <div class="input-group">
+                <textarea maxlength="2000" x-on:input.debounce.750ms="translate" class="form-control" rows="10" placeholder="@Localization.Index.InsertText"
+                    x-model="sourceText" autofocus></textarea>
+            </div>
+            <div class="input-group">
+                <textarea maxlength="2000" x-on:input.debounce.750ms="translate" class="form-control" rows="5"
+                          placeholder='@Localization.Index.InsertContextInformation' x-model="context"></textarea>
+            </div>
+        </div>
+        <div class="col-6">
+            <div x-cloak class="mt-5 text-center" x-show="isBusy">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <template x-if="errorMessage">
+                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i>
+                    <span x-html="errorMessage"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </template>
+            <ul x-show="!isBusy" class="mt-2 list-group list-group-flush">
+                <template x-for="translation in translations">
+                    <li class="list-group-item">
+                        <span x-text="translation.text"></span>
+                        <span class="text-body-secondary" x-text="translation.description"></span>
+                        <div class="text-end bg-transparent border-0">
+                            <button type="button" class="btn-clipboard" aria-label="@Localization.Index.CopyToClipboard" x-init="$nextTick(() => new bootstrap.Tooltip($el))"
+                                    data-bs-toggle="tooltip" data-bs-html="true"
+                                    data-bs-title="@Localization.Index.CopyToClipboard" x-on:click="copyToClipboard($el, translation.text, '@Localization.Index.CopyToClipboard', '@Localization.Index.Copied')">
+                                <i class="bi bi-clipboard"></i>
+                            </button>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>*@
 </div>
+
+@section Scripts
+    {
+        @{
+            <script>
+                document.addEventListener("alpine:init", () => {
+                    photos('@Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName');
+                });
+            </script>
+        }
+}

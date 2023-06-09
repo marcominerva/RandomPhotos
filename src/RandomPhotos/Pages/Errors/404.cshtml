@@ -1,0 +1,16 @@
+﻿@page
+
+@{
+    ViewData["Title"] = Localization.Errors._404.PageNotFoundTitle;
+}
+
+<div class="d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">404</h1>
+        <p class="fs-3"><span class="text-danger">Ops!</span> @Localization.Errors._404.PageNotFound</p>
+        <p class="lead">
+            @Localization.Errors._404.PageDoesNotExist
+        </p>
+        <a title="Go to Home Page" asp-page="../Index" class="btn btn-primary"><i class="bi bi-house-door-fill"></i> @Localization.Errors._404.GotoHomePage</a>
+    </div>
+</div>
