@@ -1,6 +1,13 @@
 ﻿@page
 @model IndexModel
 
+@section RightCommands
+    {
+        <div x-data>
+
+        </div>
+}
+
 <div x-data="photos">
 
     <div class="row" x-cloak x-show="isBusy">
@@ -24,10 +31,9 @@
 
     <template x-if="errorMessage">
         <div class="row">
-            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            <div class="alert alert-danger fade show mt-3" role="alert">
                 <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i>
                 <span x-html="errorMessage"></span>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
     </template>
