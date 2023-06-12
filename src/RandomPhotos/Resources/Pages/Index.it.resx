@@ -117,17 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApiKeyTooltip" xml:space="preserve">
-    <value>L'API Key è salvata nella memoria del browser. Non è mai salvata sul server ed è utilizzata solo per invocare il servizio di ChatGPT.</value>
-  </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Traduci utilzzando l'intelligenza artificiale</value>
-  </data>
-  <data name="AzureProvider" xml:space="preserve">
-    <value>Azure</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Chiudi</value>
+    <value>Crea foto con l'AI</value>
   </data>
   <data name="Copied" xml:space="preserve">
     <value>Copiato!</value>
@@ -135,40 +126,7 @@
   <data name="CopyToClipboard" xml:space="preserve">
     <value>Copia negli Appunti</value>
   </data>
-  <data name="InsertApiKey" xml:space="preserve">
-    <value>Inserisci l'API Key...</value>
-  </data>
-  <data name="InsertContextInformation" xml:space="preserve">
-    <value>(Opzionale) Inserisci informazioni di contesto che possono aiutare la traduzione (ad esempio, "il testo parla di sviluppo software", "il testo contiene termini legali", ecc.)...</value>
-  </data>
-  <data name="InsertModelName" xml:space="preserve">
-    <value>Inserisci il nome del modello...</value>
-  </data>
-  <data name="InsertResourceName" xml:space="preserve">
-    <value>Inserisci il nome della risorsa...</value>
-  </data>
-  <data name="InsertText" xml:space="preserve">
-    <value>Inserisci il testo qui...</value>
-  </data>
-  <data name="InvalidSettingsErrorMessage" xml:space="preserve">
-    <value>Usa la finestra &amp;lt;a href=&amp;quot;#&amp;quot; data-bs-toggle=&amp;quot;modal&amp;quot; data-bs-target=&amp;quot;#settings&amp;quot;&amp;gt;Impostazioni&amp;lt;/a&amp;gt; per inserire l'API Key e le altre informazioni necessarie alla configurazione di ChatGPT</value>
-  </data>
-  <data name="ModelNameTooltip" xml:space="preserve">
-    <value>Il modello da utilizzare per ChatGPT. Se si sta utilizzando OpenAI, i valori consentiti sono: gpt-3.5-turbo, gpt-4 or gpt-4-32k. Se si sta utilizzando Azure OpenAI service, il nome del modello deve corrispondere al nome della distruzione che è stata creata nell'Azure AI Studio.</value>
-  </data>
-  <data name="OpenAIProvider" xml:space="preserve">
-    <value>OpenAI</value>
-  </data>
-  <data name="Provider" xml:space="preserve">
-    <value>Provider</value>
-  </data>
-  <data name="ResourceNameTooltip" xml:space="preserve">
-    <value>Il nome della risorsa di Azure OpenAI Resource che contiene il modello ChatGPT.</value>
-  </data>
-  <data name="SelectTargetLanguage" xml:space="preserve">
-    <value>Seleziona la lingua della traduzione</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Impostazioni</value>
+  <data name="Refresh" xml:space="preserve">
+    <value>Crea una nuova foto</value>
   </data>
 </root>

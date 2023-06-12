@@ -61,38 +61,11 @@ namespace RandomPhotos.Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The API Key is stored in the client browser only. It is never saved on the server and it is only used to invoke ChatGPT service..
-        /// </summary>
-        public static string ApiKeyTooltip {
-            get {
-                return ResourceManager.GetString("ApiKeyTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Translate text using AI.
+        ///   Looks up a localized string similar to Generate random photos using AI.
         /// </summary>
         public static string ApplicationDescription {
             get {
                 return ResourceManager.GetString("ApplicationDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Azure.
-        /// </summary>
-        public static string AzureProvider {
-            get {
-                return ResourceManager.GetString("AzureProvider", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Close.
-        /// </summary>
-        public static string Close {
-            get {
-                return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         
@@ -115,110 +88,11 @@ namespace RandomPhotos.Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insert API Key....
+        ///   Looks up a localized string similar to Generate a new random photo.
         /// </summary>
-        public static string InsertApiKey {
+        public static string Refresh {
             get {
-                return ResourceManager.GetString("InsertApiKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (Optional) Insert context information that can help the translation (for example, &quot;this text is talking about software development&quot;, &quot;the text contains legal terms&quot;, etc.)....
-        /// </summary>
-        public static string InsertContextInformation {
-            get {
-                return ResourceManager.GetString("InsertContextInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert the model name....
-        /// </summary>
-        public static string InsertModelName {
-            get {
-                return ResourceManager.GetString("InsertModelName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert Resource name....
-        /// </summary>
-        public static string InsertResourceName {
-            get {
-                return ResourceManager.GetString("InsertResourceName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert your text here....
-        /// </summary>
-        public static string InsertText {
-            get {
-                return ResourceManager.GetString("InsertText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use the &lt;a href=&quot;#&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#settings&quot;&gt;Settings&lt;/a&gt; dialog to set the API Key and the other requested configurations for ChatGPT.
-        /// </summary>
-        public static string InvalidSettingsErrorMessage {
-            get {
-                return ResourceManager.GetString("InvalidSettingsErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The model to use for ChatGPT. If you&apos;re using OpenAI, allowed values are: gpt-3.5-turbo, gpt-4 or gpt-4-32k. If you&apos;re working with Azure OpenAI service, model name must match the deployment name you have created in the Azure AI Studio..
-        /// </summary>
-        public static string ModelNameTooltip {
-            get {
-                return ResourceManager.GetString("ModelNameTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OpenAI.
-        /// </summary>
-        public static string OpenAIProvider {
-            get {
-                return ResourceManager.GetString("OpenAIProvider", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Provider.
-        /// </summary>
-        public static string Provider {
-            get {
-                return ResourceManager.GetString("Provider", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The name of the Azure OpenAI Resource that contains the ChatGPT model..
-        /// </summary>
-        public static string ResourceNameTooltip {
-            get {
-                return ResourceManager.GetString("ResourceNameTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the target language.
-        /// </summary>
-        public static string SelectTargetLanguage {
-            get {
-                return ResourceManager.GetString("SelectTargetLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Settings.
-        /// </summary>
-        public static string Settings {
-            get {
-                return ResourceManager.GetString("Settings", resourceCulture);
+                return ResourceManager.GetString("Refresh", resourceCulture);
             }
         }
     }

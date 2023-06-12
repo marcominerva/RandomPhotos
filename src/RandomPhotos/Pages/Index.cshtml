@@ -3,12 +3,16 @@
 
 @section RightCommands
     {
-        <div x-data>
-
-        </div>
+    <div x-data>
+        <button type="button" class="btn btn-primary" x-on:click="$dispatch('refresh')"
+                data-bs-toggle="tooltip"
+                data-bs-title="@Resources.Pages.Index.Refresh">
+            <i class="bi bi-arrow-clockwise"></i>
+        </button>
+    </div>
 }
 
-<div x-data="photos">
+<div x-data="photos" @@refresh.window="generatePhoto">
 
     <div class="row" x-cloak x-show="isBusy">
         <div class="mt-5 text-center">
@@ -16,7 +20,7 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-    </div>    
+    </div>
 
     <div x-cloak class="row" x-init="$nextTick(() => generatePhoto())" x-show="imageUrl != null">
         <div class="col text-center">
@@ -37,7 +41,7 @@
             </div>
         </div>
     </template>
-    
+
 </div>
 
 @section Scripts

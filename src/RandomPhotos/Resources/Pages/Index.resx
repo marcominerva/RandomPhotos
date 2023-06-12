@@ -117,17 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApiKeyTooltip" xml:space="preserve">
-    <value>The API Key is stored in the client browser only. It is never saved on the server and it is only used to invoke ChatGPT service.</value>
-  </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Translate text using AI</value>
-  </data>
-  <data name="AzureProvider" xml:space="preserve">
-    <value>Azure</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Close</value>
+    <value>Generate random photos using AI</value>
   </data>
   <data name="Copied" xml:space="preserve">
     <value>Copied!</value>
@@ -135,40 +126,7 @@
   <data name="CopyToClipboard" xml:space="preserve">
     <value>Copy to Clipboard</value>
   </data>
-  <data name="InsertApiKey" xml:space="preserve">
-    <value>Insert API Key...</value>
-  </data>
-  <data name="InsertContextInformation" xml:space="preserve">
-    <value>(Optional) Insert context information that can help the translation (for example, "this text is talking about software development", "the text contains legal terms", etc.)...</value>
-  </data>
-  <data name="InsertModelName" xml:space="preserve">
-    <value>Insert the model name...</value>
-  </data>
-  <data name="InsertResourceName" xml:space="preserve">
-    <value>Insert Resource name...</value>
-  </data>
-  <data name="InsertText" xml:space="preserve">
-    <value>Insert your text here...</value>
-  </data>
-  <data name="InvalidSettingsErrorMessage" xml:space="preserve">
-    <value>Use the &lt;a href="#" data-bs-toggle="modal" data-bs-target="#settings"&gt;Settings&lt;/a&gt; dialog to set the API Key and the other requested configurations for ChatGPT</value>
-  </data>
-  <data name="ModelNameTooltip" xml:space="preserve">
-    <value>The model to use for ChatGPT. If you're using OpenAI, allowed values are: gpt-3.5-turbo, gpt-4 or gpt-4-32k. If you're working with Azure OpenAI service, model name must match the deployment name you have created in the Azure AI Studio.</value>
-  </data>
-  <data name="OpenAIProvider" xml:space="preserve">
-    <value>OpenAI</value>
-  </data>
-  <data name="Provider" xml:space="preserve">
-    <value>Provider</value>
-  </data>
-  <data name="ResourceNameTooltip" xml:space="preserve">
-    <value>The name of the Azure OpenAI Resource that contains the ChatGPT model.</value>
-  </data>
-  <data name="SelectTargetLanguage" xml:space="preserve">
-    <value>Select the target language</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+  <data name="Refresh" xml:space="preserve">
+    <value>Generate a new random photo</value>
   </data>
 </root>
