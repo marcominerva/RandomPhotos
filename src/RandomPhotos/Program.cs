@@ -5,6 +5,7 @@ using ChatGptNet;
 using DallENet;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using MinimalHelpers.OpenApi;
 using MinimalHelpers.Routing;
@@ -82,6 +83,7 @@ builder.Services.AddOutputCache(options =>
     options.AddPolicy("Default", policy =>
     {
         policy.SetLocking(false)
+            .SetVaryByHeader(HeaderNames.AcceptLanguage)
             .Expire(TimeSpan.FromDays(30));
     });
 });
