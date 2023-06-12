@@ -77,6 +77,15 @@ builder.Services.AddOperationResult(options =>
     options.ErrorResponseFormat = ErrorResponseFormat.List;
 });
 
+builder.Services.AddOutputCache(options =>
+{
+    options.AddPolicy("Default", policy =>
+    {
+        policy.SetLocking(false)
+            .Expire(TimeSpan.FromDays(30));
+    });
+});
+
 builder.Services.AddRateLimiter(options =>
 {
     options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(_ =>
@@ -178,8 +187,11 @@ app.UseWhen(context => context.IsApiRequest(), builder =>
 
 // app.UseCors();
 
-// In Razor Pages apps and apps with controllers, UseOutputCache must be called after UseRouting.
-//app.UseOutputCache();
+app.UseWhen(context => context.IsWebRequest(), builder =>
+{
+    // In Razor Pages apps and apps with controllers, UseOutputCache must be called after UseRouting.
+    builder.UseOutputCache();
+});
 
 app.MapEndpoints();
 app.MapRazorPages();
