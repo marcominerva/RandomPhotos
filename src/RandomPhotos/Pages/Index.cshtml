@@ -19,21 +19,17 @@
             closeTitle: '@Resources.Pages.Index.Close',
             zoomTitle: '@Resources.Pages.Index.Zoom',
 
-            pswpModule: PhotoSwipe,
-
-            // Optional padding for images,
-            // note that this is an option of PhotoSwipe, not a plugin
-            paddingFn: (viewportSize) => {
-                return {
-                    top: 30, bottom: 30, left: 70, right: 70
-                }
-            },
+            pswpModule: PhotoSwipe
         });
 
-        const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-            // Plugins options, for example:
-            type: 'auto',
-        });
+        @if (!Request.IsMobile())
+        {
+           <text>
+            const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+                type: 'auto'
+           });
+           </text>
+        }
 
         lightbox.init();
     </script>

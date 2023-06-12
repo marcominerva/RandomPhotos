@@ -83,7 +83,7 @@ builder.Services.AddOutputCache(options =>
     options.AddPolicy("Default", policy =>
     {
         policy.SetLocking(false)
-            .SetVaryByHeader(HeaderNames.AcceptLanguage)
+            .SetVaryByHeader(HeaderNames.AcceptLanguage, HeaderNames.UserAgent)
             .Expire(TimeSpan.FromDays(30));
     });
 });
