@@ -19,8 +19,12 @@
             "destination": "wwwroot/lib/alpinejs"
         },
         {
-            "library": "bs5-lightbox@1.8.3",
-            "destination": "wwwroot/lib/bs5-lightbox"
+            "library": "photoswipe@5.3.7",
+            "destination": "wwwroot/lib/photoswipe"
+        },
+        {
+            "library": "photoswipe-dynamic-caption-plugin@1.2.7",
+            "destination": "wwwroot/lib/photoswipe-dynamic-caption-plugin"
         }
     ]
 }

@@ -69,10 +69,6 @@ input:focus {
     }
 }
 
-.lightbox-caption {
-    background-color: black;
-}
-
 .btn-clipboard {
     line-height: 1;
     color: var(--bs-body-color);

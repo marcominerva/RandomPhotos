@@ -72,7 +72,6 @@
 
     <script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
-    <script src="~/lib/bs5-lightbox/index.bundle.min.js" asp-append-version="true"></script>
 
     <script src="~/js/app.js" asp-append-version="true"></script>
     <script src="~/js/photos.js" asp-append-version="true"></script>
@@ -81,17 +80,6 @@
         $(document).ready(function () {
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
             const tooltipList = [...tooltipTriggerList].map(element => new bootstrap.Tooltip(element));
-
-            const options = {
-                keyboard: true,
-                size: 'fullscreen'
-            };
-
-            document.querySelectorAll('.lightbox').forEach((el) => el.addEventListener('click', (e) => {
-                e.preventDefault();
-                const lightbox = new Lightbox(el, options);
-                lightbox.show();
-            }));
         });
     </script>
 
