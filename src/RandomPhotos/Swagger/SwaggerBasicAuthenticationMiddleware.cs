@@ -1,8 +1,8 @@
 ﻿using System.Net.Http.Headers;
 using System.Text;
-using RandomPhotos.BusinessLayer.Settings;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
+using RandomPhotos.BusinessLayer.Settings;
 using TinyHelpers.Extensions;
 
 namespace RandomPhotos.Swagger;
