@@ -23,10 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Update="appsettings.local.json" CopyToPublishDirectory="Never" />
-    </ItemGroup>
-
-    <ItemGroup>
         <AssemblyAttribute Include="BuildDateTimeAttribute">
             <_Parameter1>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</_Parameter1>
         </AssemblyAttribute>
