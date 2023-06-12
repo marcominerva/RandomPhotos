@@ -1,6 +1,9 @@
 ﻿using ChatGptNet;
 using DallENet;
+using DallENet.Exceptions;
+using Microsoft.Extensions.Logging;
 using OperationResults;
+using Polly;
 using RandomPhotos.BusinessLayer.Services.Interfaces;
 using RandomPhotos.Shared.Models;
 
@@ -10,24 +13,36 @@ public class PhotoService : IPhotoService
 {
     private readonly IChatGptClient chatGptClient;
     private readonly IDallEClient dallEClient;
+    private readonly ILogger<PhotoService> logger;
 
-    public PhotoService(IChatGptClient chatGptClient, IDallEClient dallEClient)
+    public PhotoService(IChatGptClient chatGptClient, IDallEClient dallEClient, ILogger<PhotoService> logger)
     {
         this.chatGptClient = chatGptClient;
         this.dallEClient = dallEClient;
+        this.logger = logger;
     }
 
     public async Task<Result<Photo>> GeneratePhotoAsync()
     {
-        var language = Thread.CurrentThread.CurrentCulture.EnglishName;
+        var policy = Policy.Handle<DallEException>(ex => ex.Error?.Code == "contentFilter").RetryAsync(3, onRetry: (error, retryCount) =>
+        {
+            logger.LogError(error, "Unexpected error while generating image");
+        });
 
-        var photoDesriptionResponse = await chatGptClient.AskAsync($"Propose a description for a random picture. Write the description in {language}, using a single paragraph. The description must be less than 700 characters.");
-        var photoDescription = photoDesriptionResponse.GetMessage();
+        var result = await policy.ExecuteAsync(async () =>
+        {
+            var language = Thread.CurrentThread.CurrentCulture.EnglishName;
 
-        var prompt = photoDescription[..Math.Min(950, photoDescription.Length)];
-        var photo = await dallEClient.GenerateImagesAsync(prompt);
+            var photoDesriptionResponse = await chatGptClient.AskAsync($"Propose a description for a random picture. Write the description in {language}, using a single paragraph. The description must be less than 700 characters.");
+            var photoDescription = photoDesriptionResponse.GetMessage();
 
-        var result = new Photo(photoDescription, photo.GetImageUrl());
+            var prompt = photoDescription[..Math.Min(950, photoDescription.Length)];
+            var photo = await dallEClient.GenerateImagesAsync(prompt);
+
+            var result = new Photo(photoDescription, photo.GetImageUrl());
+            return result;
+        });
+
         return result;
     }
 }
