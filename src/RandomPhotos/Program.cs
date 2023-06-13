@@ -94,8 +94,8 @@ builder.Services.AddRateLimiter(options =>
     {
         return RateLimitPartition.GetTokenBucketLimiter("Default", _ => new TokenBucketRateLimiterOptions
         {
-            TokenLimit = 1000,
-            TokensPerPeriod = 100,
+            TokenLimit = 500,
+            TokensPerPeriod = 50,
             ReplenishmentPeriod = TimeSpan.FromHours(1),
             QueueProcessingOrder = QueueProcessingOrder.OldestFirst
         });
