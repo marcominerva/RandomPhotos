@@ -4,16 +4,16 @@
         isBusy: false,
         errorMessage: null,
 
-        description: null,
         imageUrl: null,
+        description: null,
 
         generatePhoto: async function () {
             if (this.isBusy)
                 return;
 
             this.errorMessage = null;
-            this.description = null;
             this.imageUrl = null;
+            this.description = null;
             this.isBusy = true;
 
             try {
