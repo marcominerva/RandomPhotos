@@ -60,7 +60,7 @@
     </div>
 
     <div x-cloak class="row" x-init="$nextTick(() => generatePhoto())" x-show="imageUrl != null">
-        <div class="col text-center">
+        <div class="text-center">
             <div class="pswp-gallery" id="gallery--individual">
                 <a x-bind:href="imageUrl" data-pswp-width="@appSettingsOptions.Value.PhotoWidth" data-pswp-height="@appSettingsOptions.Value.PhotoHeight" target="_blank">
                     <img x-bind:src="imageUrl" class="photo img-thumbnail" x-bind:alt="description">
@@ -70,6 +70,13 @@
         <div x-cloak class="mt-2" x-show="description != null" x-transition.delay.1500ms>
             <span x-text="description"></span>
         </div>
+
+        @if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName != "en")
+        {
+            <div class="text-end">
+                <a class="text-body-secondary" asp-page="/Index" asp-route-culture="en"><small>Try in English</small></a>
+            </div>            
+        }
     </div>
 
     <template x-if="errorMessage">
