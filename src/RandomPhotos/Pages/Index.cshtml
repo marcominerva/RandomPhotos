@@ -72,7 +72,7 @@
 
             @if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName != "en")
             {
-                <div class="text-end">
+                <div class="text-end" x-show="description != null">
                     <a class="text-body-secondary" asp-page="/Index" asp-route-culture="en"><small>Try in English</small></a>
                 </div>
             }
