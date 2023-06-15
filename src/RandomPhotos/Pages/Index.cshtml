@@ -27,9 +27,9 @@
         @if (!Request.IsMobile())
         {
             <text>
-            const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-                type: 'auto'
-            });
+                        const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+                    type: 'auto'
+                });
             </text>
         }
 
@@ -67,16 +67,16 @@
                 </a>
             </div>
         </div>
-        <div x-cloak class="mt-2" x-show="description != null" x-transition.delay.1500ms>
+        <div x-cloak class="mt-2" x-show="description != null" x-transition:enter.delay.1500ms x-transition:leave.delay.0ms>
             <span x-text="description"></span>
-        </div>
 
-        @if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName != "en")
-        {
-            <div class="text-end">
-                <a class="text-body-secondary" asp-page="/Index" asp-route-culture="en"><small>Try in English</small></a>
-            </div>            
-        }
+            @if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName != "en")
+            {
+                <div class="text-end">
+                    <a class="text-body-secondary" asp-page="/Index" asp-route-culture="en"><small>Try in English</small></a>
+                </div>
+            }
+        </div>
     </div>
 
     <template x-if="errorMessage">
