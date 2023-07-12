@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ChatGptNet" Version="2.0.16" />
-        <PackageReference Include="DallENet" Version="1.0.8" />
+        <PackageReference Include="ChatGptNet" Version="2.1.9" />
+        <PackageReference Include="DallENet" Version="1.0.9" />
         <PackageReference Include="OperationResultTools" Version="1.0.12" />
         <PackageReference Include="Polly" Version="7.2.4" />
-        <PackageReference Include="TinyHelpers" Version="2.0.31" />
+        <PackageReference Include="TinyHelpers" Version="2.0.35" />
     </ItemGroup>
 
     <ItemGroup>
