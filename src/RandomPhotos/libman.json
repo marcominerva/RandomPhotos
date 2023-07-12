@@ -15,11 +15,11 @@
             "destination": "wwwroot/lib/jquery"
         },
         {
-            "library": "alpinejs@3.12.2",
+            "library": "alpinejs@3.12.3",
             "destination": "wwwroot/lib/alpinejs"
         },
         {
-            "library": "photoswipe@5.3.7",
+            "library": "photoswipe@5.3.8",
             "destination": "wwwroot/lib/photoswipe"
         },
         {
