@@ -2,6 +2,7 @@
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
+using Microsoft.Net.Http.Headers;
 using RandomPhotos.BusinessLayer.Settings;
 using TinyHelpers.Extensions;
 
@@ -22,7 +23,7 @@ public class SwaggerBasicAuthenticationMiddleware
     {
         if (context.Request.Path.StartsWithSegments("/swagger") && settings.UserName.HasValue() && settings.Password.HasValue())
         {
-            string authenticationHeader = context.Request.Headers["Authorization"];
+            string authenticationHeader = context.Request.Headers[HeaderNames.Authorization];
             if (authenticationHeader?.StartsWith("Basic ") ?? false)
             {
                 // Get the credentials from request header
