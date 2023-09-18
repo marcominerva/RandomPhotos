@@ -35,7 +35,7 @@ public class PhotoService : IPhotoService
 
             var conversationId = await chatGptClient.SetupAsync($"You are an assistant that answers always in {language} language.");
             var photoDesriptionResponse = await chatGptClient.AskAsync(conversationId, $"Propose a description for a random picture. Write the description in a single paragraph. The description must be less than 400 characters.");
-            var photoDescription = photoDesriptionResponse.GetMessage();
+            var photoDescription = photoDesriptionResponse.GetContent();
 
             var prompt = photoDescription[..Math.Min(950, photoDescription.Length)];
             var photo = await dallEClient.GenerateImagesAsync(prompt);
