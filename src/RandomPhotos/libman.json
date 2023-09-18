@@ -7,7 +7,7 @@
             "destination": "wwwroot/lib/bootstrap"
         },
         {
-            "library": "bootstrap-icons@1.11.0",
+            "library": "bootstrap-icons@1.11.1",
             "destination": "wwwroot/lib/bootstrap-icons"
         },
         {
@@ -19,7 +19,7 @@
             "destination": "wwwroot/lib/alpinejs"
         },
         {
-            "library": "photoswipe@5.4.0",
+            "library": "photoswipe@5.4.1",
             "destination": "wwwroot/lib/photoswipe"
         },
         {
