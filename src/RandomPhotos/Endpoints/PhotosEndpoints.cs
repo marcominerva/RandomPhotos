@@ -17,9 +17,9 @@ public class ChatEndpoints : IEndpointRouteHandler
             .WithOpenApi();
     }
 
-    public async Task<IResult> GeneratePhotoAsync(IPhotoService photoService, HttpContext httpContext)
+    public async Task<IResult> GeneratePhotoAsync(IPhotoService photoService, HttpContext httpContext, CancellationToken cancellationToken)
     {
-        var result = await photoService.GeneratePhotoAsync();
+        var result = await photoService.GeneratePhotoAsync(cancellationToken);
 
         var response = httpContext.CreateResponse(result);
         return response;

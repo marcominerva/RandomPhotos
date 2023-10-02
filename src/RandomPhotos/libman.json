@@ -19,7 +19,7 @@
             "destination": "wwwroot/lib/alpinejs"
         },
         {
-            "library": "photoswipe@5.4.1",
+            "library": "photoswipe@5.4.2",
             "destination": "wwwroot/lib/photoswipe"
         },
         {

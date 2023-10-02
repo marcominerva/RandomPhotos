@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
 using ChatGptNet;
 using DallENet;
+using DallENet.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
@@ -10,6 +11,8 @@ using Microsoft.OpenApi.Models;
 using MinimalHelpers.OpenApi;
 using MinimalHelpers.Routing;
 using OperationResults.AspNetCore.Http;
+using Polly;
+using Polly.Retry;
 using RandomPhotos.BusinessLayer.Services;
 using RandomPhotos.BusinessLayer.Services.Interfaces;
 using RandomPhotos.BusinessLayer.Settings;
@@ -34,6 +37,24 @@ builder.Services.AddWebOptimizer(minifyCss: true, minifyJavaScript: builder.Envi
 
 builder.Services.AddChatGpt(builder.Configuration);
 builder.Services.AddDallE(builder.Configuration);
+
+builder.Services.AddResiliencePipeline("DallEContentFilterResiliencePipeline", (builder, context) =>
+{
+    builder.AddRetry(new RetryStrategyOptions
+    {
+        ShouldHandle = new PredicateBuilder().Handle<DallEException>(ex => ex.Error?.Code == "contentFilter"),
+        Delay = TimeSpan.Zero,
+        BackoffType = DelayBackoffType.Constant,
+        MaxRetryAttempts = 3,
+        OnRetry = args =>
+        {
+            var logger = context.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
+            logger.LogError(args.Outcome.Exception, "Unexpected error while generating the image");
+            return default;
+        }
+    });
+});
 
 builder.Services.AddProblemDetails(options =>
 {
