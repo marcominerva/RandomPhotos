@@ -1,10 +1,11 @@
 ﻿using ChatGptNet;
 using DallENet;
-using DallENet.Exceptions;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using OperationResults;
 using Polly;
+using Polly.Registry;
 using RandomPhotos.BusinessLayer.Services.Interfaces;
+using RandomPhotos.BusinessLayer.Settings;
 using RandomPhotos.Shared.Models;
 
 namespace RandomPhotos.BusinessLayer.Services;
@@ -13,36 +14,35 @@ public class PhotoService : IPhotoService
 {
     private readonly IChatGptClient chatGptClient;
     private readonly IDallEClient dallEClient;
-    private readonly ILogger<PhotoService> logger;
+    private readonly ResiliencePipeline pipeline;
+    private readonly AppSettings appSettings;
 
-    public PhotoService(IChatGptClient chatGptClient, IDallEClient dallEClient, ILogger<PhotoService> logger)
+    public PhotoService(IChatGptClient chatGptClient, IDallEClient dallEClient, ResiliencePipelineProvider<string> pipelineProvider, IOptions<AppSettings> appSettingsOptions)
     {
         this.chatGptClient = chatGptClient;
         this.dallEClient = dallEClient;
-        this.logger = logger;
+
+        pipeline = pipelineProvider.GetPipeline("DallEContentFilterResiliencePipeline");
+
+        appSettings = appSettingsOptions.Value;
     }
 
-    public async Task<Result<Photo>> GeneratePhotoAsync()
+    public async Task<Result<Photo>> GeneratePhotoAsync(CancellationToken cancellationToken = default)
     {
-        var policy = Policy.Handle<DallEException>(ex => ex.Error?.Code == "contentFilter").RetryAsync(3, onRetry: (error, retryCount) =>
-        {
-            logger.LogError(error, "Unexpected error while generating image");
-        });
-
-        var result = await policy.ExecuteAsync(async () =>
+        var result = await pipeline.ExecuteAsync(async (cancellationToken) =>
         {
             var language = Thread.CurrentThread.CurrentCulture.EnglishName;
 
-            var conversationId = await chatGptClient.SetupAsync($"You are an assistant that answers always in {language} language.");
-            var photoDesriptionResponse = await chatGptClient.AskAsync(conversationId, $"Propose a description for a random picture. Write the description in a single paragraph. The description must be less than 400 characters.");
+            var conversationId = await chatGptClient.SetupAsync($"You are an assistant that answers always in {language} language.", cancellationToken);
+            var photoDesriptionResponse = await chatGptClient.AskAsync(conversationId, appSettings.ImageDescriptionPrompt, cancellationToken: cancellationToken);
             var photoDescription = photoDesriptionResponse.GetContent();
 
             var prompt = photoDescription[..Math.Min(950, photoDescription.Length)];
-            var photo = await dallEClient.GenerateImagesAsync(prompt);
+            var photo = await dallEClient.GenerateImagesAsync(prompt, cancellationToken: cancellationToken);
 
             var result = new Photo(photoDescription, photo.GetImageUrl());
             return result;
-        });
+        }, cancellationToken);
 
         return result;
     }

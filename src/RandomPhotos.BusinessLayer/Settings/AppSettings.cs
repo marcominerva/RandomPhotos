@@ -11,4 +11,6 @@ public class AppSettings
     public int PhotoWidth { get; init; }
 
     public int PhotoHeight { get; init; }
+
+    public string ImageDescriptionPrompt { get; init; } = "Propose a description for a random picture. The picture can represents landscapes, animals, people and everyday's life. Write the description in a single paragraph. The description must be less than 400 characters.";
 }
