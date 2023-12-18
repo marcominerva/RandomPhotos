@@ -4,11 +4,9 @@ using System.Threading.RateLimiting;
 using ChatGptNet;
 using DallENet;
 using DallENet.Exceptions;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
-using MinimalHelpers.OpenApi;
 using MinimalHelpers.Routing;
 using OperationResults.AspNetCore.Http;
 using Polly;
@@ -90,7 +88,6 @@ if (swagger.IsEnabled)
         options.AddAcceptLanguageHeader();
 
         options.AddDefaultResponse();
-        options.AddMissingSchemas();
     });
 }
 
@@ -155,34 +152,7 @@ app.UseWhen(context => context.IsWebRequest(), builder =>
 
 app.UseWhen(context => context.IsApiRequest(), builder =>
 {
-    if (!app.Environment.IsDevelopment())
-    {
-        // Error handling
-        builder.UseExceptionHandler(new ExceptionHandlerOptions
-        {
-            AllowStatusCode404Response = true,
-            ExceptionHandler = async (HttpContext context) =>
-            {
-                var problemDetailsService = context.RequestServices.GetService<IProblemDetailsService>();
-                var exceptionHandlerFeature = context.Features.Get<IExceptionHandlerFeature>();
-                var error = exceptionHandlerFeature?.Error;
-
-                // Write as JSON problem details
-                await problemDetailsService.WriteAsync(new()
-                {
-                    HttpContext = context,
-                    AdditionalMetadata = exceptionHandlerFeature?.Endpoint?.Metadata,
-                    ProblemDetails =
-                    {
-                        Status = context.Response.StatusCode,
-                        Title = error?.GetType().FullName ?? "An error occurred while processing your request",
-                        Detail = error?.Message
-                    }
-                });
-            }
-        });
-    }
-
+    builder.UseExceptionHandler();
     builder.UseStatusCodePages();
 });
 

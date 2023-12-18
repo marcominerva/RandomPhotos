@@ -5,9 +5,9 @@ using RandomPhotos.Shared.Models;
 
 namespace RandomPhotos.Endpoints;
 
-public class ChatEndpoints : IEndpointRouteHandler
+public class ChatEndpoints : IEndpointRouteHandlerBuilder
 {
-    public void MapEndpoints(IEndpointRouteBuilder endpoints)
+    public static void MapEndpoints(IEndpointRouteBuilder endpoints)
     {
         var translatorApiGroup = endpoints.MapGroup("/api/photos");
 
@@ -17,7 +17,7 @@ public class ChatEndpoints : IEndpointRouteHandler
             .WithOpenApi();
     }
 
-    public async Task<IResult> GeneratePhotoAsync(IPhotoService photoService, HttpContext httpContext, CancellationToken cancellationToken)
+    public static async Task<IResult> GeneratePhotoAsync(IPhotoService photoService, HttpContext httpContext, CancellationToken cancellationToken)
     {
         var result = await photoService.GeneratePhotoAsync(cancellationToken);
 
