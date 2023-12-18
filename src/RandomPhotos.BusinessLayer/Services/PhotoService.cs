@@ -1,5 +1,7 @@
 ﻿using ChatGptNet;
+using ChatGptNet.Extensions;
 using DallENet;
+using DallENet.Extensions;
 using Microsoft.Extensions.Options;
 using OperationResults;
 using Polly;
@@ -10,22 +12,10 @@ using RandomPhotos.Shared.Models;
 
 namespace RandomPhotos.BusinessLayer.Services;
 
-public class PhotoService : IPhotoService
+public class PhotoService(IChatGptClient chatGptClient, IDallEClient dallEClient, ResiliencePipelineProvider<string> pipelineProvider, IOptions<AppSettings> appSettingsOptions) : IPhotoService
 {
-    private readonly IChatGptClient chatGptClient;
-    private readonly IDallEClient dallEClient;
-    private readonly ResiliencePipeline pipeline;
-    private readonly AppSettings appSettings;
-
-    public PhotoService(IChatGptClient chatGptClient, IDallEClient dallEClient, ResiliencePipelineProvider<string> pipelineProvider, IOptions<AppSettings> appSettingsOptions)
-    {
-        this.chatGptClient = chatGptClient;
-        this.dallEClient = dallEClient;
-
-        pipeline = pipelineProvider.GetPipeline("DallEContentFilterResiliencePipeline");
-
-        appSettings = appSettingsOptions.Value;
-    }
+    private readonly ResiliencePipeline pipeline = pipelineProvider.GetPipeline("DallEContentFilterResiliencePipeline");
+    private readonly AppSettings appSettings = appSettingsOptions.Value;
 
     public async Task<Result<Photo>> GeneratePhotoAsync(CancellationToken cancellationToken = default)
     {
@@ -37,9 +27,7 @@ public class PhotoService : IPhotoService
             var photoDesriptionResponse = await chatGptClient.AskAsync(conversationId, appSettings.ImageDescriptionPrompt, cancellationToken: cancellationToken);
             var photoDescription = photoDesriptionResponse.GetContent();
 
-            var prompt = photoDescription[..Math.Min(950, photoDescription.Length)];
-            var photo = await dallEClient.GenerateImagesAsync(prompt, cancellationToken: cancellationToken);
-
+            var photo = await dallEClient.GenerateImagesAsync(photoDescription, cancellationToken: cancellationToken);
             var result = new Photo(photoDescription, photo.GetImageUrl());
             return result;
         }, cancellationToken);

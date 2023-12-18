@@ -5,9 +5,9 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomPhotos", "src\RandomPhotos\RandomPhotos.csproj", "{C1990964-A256-4989-9E6E-9CEF938C1C5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomPhotos.BusinessLayer", "src\RandomPhotos.BusinessLayer\RandomPhotos.BusinessLayer.csproj", "{A80E7ECF-5558-4AFF-B6FC-CDE2C0FE7FAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomPhotos.BusinessLayer", "src\RandomPhotos.BusinessLayer\RandomPhotos.BusinessLayer.csproj", "{A80E7ECF-5558-4AFF-B6FC-CDE2C0FE7FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomPhotos.Shared", "src\RandomPhotos.Shared\RandomPhotos.Shared.csproj", "{253352B1-0C4A-42B0-8F79-9F34B807CCA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomPhotos.Shared", "src\RandomPhotos.Shared\RandomPhotos.Shared.csproj", "{253352B1-0C4A-42B0-8F79-9F34B807CCA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

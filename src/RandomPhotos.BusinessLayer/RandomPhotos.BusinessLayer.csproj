@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ChatGptNet" Version="2.5.4" />
-        <PackageReference Include="DallENet" Version="1.0.13" />
-        <PackageReference Include="OperationResultTools" Version="1.0.12" />
-        <PackageReference Include="Polly.Core" Version="8.0.0" />
-        <PackageReference Include="TinyHelpers" Version="2.0.35" />
+        <PackageReference Include="ChatGptNet" Version="3.0.6" />
+        <PackageReference Include="DallENet" Version="2.0.6" />
+        <PackageReference Include="OperationResultTools" Version="1.0.15" />
+        <PackageReference Include="Polly.Core" Version="8.2.0" />
+        <PackageReference Include="TinyHelpers" Version="3.0.2" />
     </ItemGroup>
 
     <ItemGroup>
